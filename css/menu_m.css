@@ -1,0 +1,9 @@
+.buttons{cursor: pointer;}
+.slider.sc_slider{ display: none; transition: all 500ms ease;}
+#menu_movil{ display: none; position: fixed; z-index: 5000; width: 100%;}
+.pos_der{right: 0;}
+.menu_2.movil{ margin: auto; text-align: center; position: absolute; width: 100vw; height: 100vh; background-color: rgba(255,255,255,.8); z-index: 1000; display: flex; justify-content: center; align-items: center;}
+.menu_2.movil nav li { list-style: none; padding: 15px;}
+.menu_2.movil nav li a { text-decoration: none; color:#001b8b; font-size:22px; font-weight:600;}
+.close { width: 100%; z-index: 5000; position: absolute; text-align: right; right: 10px; top: 10px;}
+.close i{ font-size: 2rem; color:#001b8b;}

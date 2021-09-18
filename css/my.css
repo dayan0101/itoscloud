@@ -1,0 +1,77 @@
+.buttons{cursor: pointer;}
+.slider.sc_slider{display: none;}
+#menu_movil{display: none; position: fixed; z-index: 5000; width: 100%;}
+.pos_der{right: 0; cursor:pointer;}
+.menu_2.movil{ margin: auto; text-align: center; position: absolute; width: 100vw; height: 100vh; background-color: #fff; z-index: 1000; display: flex; justify-content: center; align-items: center;}
+.menu_2.movil nav li {list-style: none; padding: 15px;}
+.menu_2.movil nav li a {text-decoration: none;}
+.close { width: 100%; z-index: 5000; position: absolute; text-align: right; right: 10px; top: 10px;}
+.close i{ font-size: 1rem; color:#001b8b;}
+
+
+/* BULLETS */
+
+.bullets {
+	position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bullets .pos_bull{
+	text-align: center;	
+}
+
+.bullets .bt_ll {
+    cursor: pointer;
+    height: 12px;
+    border-radius: 50%;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #fff;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+ }
+  
+.bt_ll.active, .bt_ll:hover {
+    background-color: #001B8B !important;
+}
+
+/* TERMINAN BULLETS */
+
+/* IMAGENES PARA LOS SLIDERS */
+.img_slider{width: 100%; margin-top: -1rem;}
+
+@media only screen and (max-width: 750px) {
+    .img_slider{
+        margin-top: 0;
+    }
+
+}
+
+@media only screen and (max-width: 630px) {
+    .bullets .pos_bull{
+        padding-top: 25px;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 500px) {
+    .img_slider{
+        width: 100vh;
+    }
+
+}
+
+@media only screen and (max-width: 465px) {
+    .bullets .pos_bull{
+        padding-top: 45px;
+    }
+
+}
+
+
+
