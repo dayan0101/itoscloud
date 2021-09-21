@@ -330,17 +330,49 @@
     });
 
      $('#tablaMX').on('submit', function(event){
-        event.preventDefault();       
-        $.post('eventos/eventos.php', {action: 'consulta'}, function(data) {
-          $("#tableMX").html(data);
+        event.preventDefault();
+        var d = new Date();
+        var fechaFin = d.getFullYear().toString() + "-" + (('0' + (d.getMonth()+1)).slice(-2).toString()) + "-" + ('0' + d.getDate()).slice(-2).toString();
+        var d = sumarDias(-5); 
+        fechaIni = d.getFullYear().toString() + "-" + (('0' + (d.getMonth()+1)).slice(-2).toString()) + "-" + ('0' + d.getDate()).slice(-2).toString();
+        $.ajax({
+    url : 'https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/'+fechaIni+'/'+fechaFin+'?token=a441355af61c510d2ba5076729a15d8756783e6c2fdbc88a21f3c5d64c956027',
+    jsonp : 'callback',
+    dataType : 'jsonp', //Se utiliza JSONP para realizar la consulta cross-site
+    success : function(response) {  //Handler de la respuesta
+      var series=response.bmx.series;
+      $("#tableMX").html();
+      //Se carga una tabla con los registros obtenidos
+      for (var i in series) {
+          var serie=series[i];
+          var serieTitulo = serie.titulo;
+          $("#tableMX").append('<p>La serie SF43718 de titulo '+serieTitulo+' contiene los siguientes datos');
+          var html = '<table style="border: 1px solid black;"><tr><td style="border: 1px solid black;">Fecha</td><td style="border: 1px solid black;">Tipo de cambio</td></tr>';
+          for (var j in serie['datos']) {
+             var datos = serie['datos'][j];
+             html +='<tr><td style="border: 1px solid black;">'+datos.fecha+'</td><td style="border: 1px solid black;">'+datos.dato+'</td></tr>';
+          }
+          html += '</table>';
+       $("#tableMX").append(html);
+      }
+    }
+  });
+});
+
+
+
+
+//        $.post('eventos/eventos.php', {action: 'consulta'}, function(data) {
+  //        $("#tableMX").html(data);
          
         	//se procesa respuesta del banco
-        })
+    //    })
 
         
-    });
+    //});
 
-function sumarDias(fecha, dias){
+function sumarDias(dias){
+  var fecha = new Date();
   fecha.setDate(fecha.getDate() + dias);
   return fecha;
 }
